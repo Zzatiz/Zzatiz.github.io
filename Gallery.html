@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap">
+</head>
+<style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 1em;
+      background-color: black;
+    }
+    .nav-item {
+      font-size: 1.5em;
+      color: yellow;
+      font-family: 'Xanh Mono', monospace;
+      transition: color 0.5s ease;
+	  margin-top: 100px;
+    }
+
+    .nav-item:hover {
+      color: red;
+    }
+	    #title {
+      text-align: center;
+      font-size: 6em;
+      margin-top: 1em;
+	  z-index: 1000;
+    }
+	    .matrix {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1000;
+      font-size: 1.2em;
+      line-height: 1.2em;
+      color: red;
+      white-space: pre-wrap;
+      transform: translate(-50%, -50%);
+	}
+		#content {
+	  position: relative;
+	  height: calc(50vh);
+	  overflow: hidden;
+	  background-image: url('redplated.png');
+	  background-size: large;
+	  background-position: center;
+	  z-index: 100px;
+	}
+.sticker-art {
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sticker-p-gif {
+  background-image: url('p.gif');
+  width: 300px;
+  height: 300px;
+  left: 10%; 
+  top: 80%;
+  z-index: 1000px;
+}
+
+.sticker-tall {
+  background-image: url('scribbles.jpg');
+  width: 400px;
+  height: 300px;
+  left: 80%;
+  clip-path: inset(20% 0 0 0);
+
+  top: 100%;
+}
+
+.sticker-square {
+  background-image: url('cricket.gif');
+  width: 500px;
+  height: 500px;
+  left: 40%;
+  top: 50%;
+  bottom: 10%;
+}
+
+.sticker-wide {
+  background-image: url('Lushed.png');
+  width: 500px;
+  height: 500px;
+  right: 20%;
+  top: 150%;
+}
+
+.sticker-cross {
+  background-image: url('cross.gif');
+  width: 500px;
+  height: 500px;
+  left: 20%;
+  top: 125%;
+}
+iframe {
+  display: block;
+  margin: auto;
+  z-index: 1001px;
+  margin-left: 100px;
+  
+}
+
+</style>
+<body>
+  <div id="title-container" style="position: relative;">
+    <pre id="matrix" class="matrix"></pre>
+  </div>
+  <div class="navbar">
+    <a href="zackzati.html" class="nav-item glitch" data-text="home">home</a>
+    <a href="https://github.com/Zzatiz" class="nav-item glitch" data-text="programs">programs</a>
+    <a href="Gallery.html" class="nav-item glitch" data-text="gallery">gallery</a>
+    <a href="Links.html" class="nav-item glitch" data-text="links">links</a>
+  </div>
+  <div id="content">
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/68hUynrpLvE?si=WZFagqoB2w2YkStt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+ </div>
+  <div class="gallery">
+	<div class="sticker-art sticker-p-gif"></div>
+	<div class="sticker-art sticker-tall"></div>
+	<div class="sticker-art sticker-square"></div>
+	<div class="sticker-art sticker-wide"></div>
+	<div class="sticker-art sticker-cross"></div>
+
+
+  </div>
+
+</body>
+  <script>
+    const title = document.getElementById('title');
+    let counter = 0;
+
+    setInterval(function() {
+      counter++;
+      if(counter % 5 === 0) {
+        title.innerText = 'Welcome to:';
+      } else if(counter % 3 === 0) {
+        title.innerText = 'gFrgh Fdhvdu';
+      } else {
+        title.innerText = 'ZACK ZATI';
+      }
+    }, 1000);
+
+    function printLineByLine(text, onComplete) {
+      let lines = text.split("\n");
+      let i = 0;
+      let matrix = document.getElementById("matrix");
+      let interval = setInterval(() => {
+        if (i < lines.length) {
+          matrix.innerHTML += lines[i] + "\n";
+          i++;
+        } else {
+          clearInterval(interval);
+          onComplete(); 
+        }
+      }, 100);
+    }
+
+    function deleteLineByLine(text, onComplete) {
+      let lines = text.split("\n");
+      let i = lines.length - 1;
+      let matrix = document.getElementById("matrix");
+      let interval = setInterval(() => {
+        if (i >= 0) {
+          let currentText = matrix.innerHTML.trim().split("\n");
+          currentText.pop();
+          matrix.innerHTML = currentText.join("\n") + "\n";
+          i--;
+        } else {
+          clearInterval(interval);
+          onComplete(); 
+      }, 100);
+    }
+
+    let binaryArt = `
+    1010101010101010
+    0101010101010101
+    1010101010101010
+    0101010101010101
+    1010101010101010
+    0101010101010101
+    1010101010101010
+    0101010101010101
+    `;
+
+    function animationCycle() {
+      printLineByLine(binaryArt, () => {
+        setTimeout(() => {
+          deleteLineByLine(binaryArt, () => {
+            setTimeout(animationCycle, 500); 
+          });
+        }, 500); 
+      });
+    }
+
+    animationCycle(); 
+
+    </script>
+</html>
