@@ -35,100 +35,6 @@
       z-index: 999; 
       pointer-events: none;
     }
-	
-/* styles.css */
-
-
-.site-header {
-  background: #101010;
-  padding: 1em 0;
-  text-align: center;
-}
-
-.navigation .nav-link {
-  color: #fff;
-  margin: 0 1em;
-  text-decoration: none;
-  font-size: 1.2em;
-}
-
-.navigation .nav-link:hover,
-.navigation .nav-link.active {
-  color: #FF0000;
-}
-
-.main-content {
-  padding: 2em;
-}
-
-.hero-section {
-  text-align: center;
-}
-
-.main-title {
-  font-size: 4em;
-  margin-bottom: 0.5em;
-  /* Glitch effect applied on hover in the script */
-}
-
-.tagline {
-  font-size: 1.5em;
-  color: #777;
-  margin-bottom: 2em;
-}
-
-.services-section {
-  margin: 2em 0;
-}
-
-.section-title {
-  font-size: 2.5em;
-  margin-bottom: 1em;
-  color: #FF0000;
-  text-align: center;
-}
-
-.services-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.service-item {
-  background: #222;
-  margin: 0.5em 0;
-  padding: 1em;
-  border-left: 5px solid #FF0000;
-}
-
-.contact-section {
-  text-align: center;
-  margin: 3em 0;
-}
-
-.contact-button {
-  display: inline-block;
-  padding: 1em 2em;
-  background: #FF0000;
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.5em;
-  border: none;
-  cursor: pointer;
-}
-
-.contact-button:hover {
-  background: #E60000;
-}
-
-.site-footer {
-  background: #101010;
-  padding: 1em 0;
-  text-align: center;
-  font-size: 0.8em;
-}
-
-/* Rest of the styles and keyframes for glitch effect */
-
 #loader {
   position: absolute; /* Use fixed to position relative to the viewport */
   top: 50%;
@@ -175,7 +81,7 @@ img#loader {
       padding: 0;
       background-color: black;
       color: white;
-	  height: 120%;
+		height: 120%;
     }
 
 
@@ -358,24 +264,22 @@ canvas {
     <a href="Links.html" class="nav-item glitch" data-text="links">connect</a>
   </div>
 
+
+
 <div id="content" class="content-section">
-  <h1 id="main-heading" class="glitch" data-text="I, Xavier Zati" aria-label="I, Xavier Zati">I, Xavier Zati</h1>
-  <div id="description" class="source-code">
-    <p class="description-title">I am a jack of all trades for your business, my abilities consist of:</p>
-    <ul>
-      <li class="bullets"><b>Full Stack Web Development</b></li>
-      <li class="bullets"><b>Cybersecurity</b></li>
-      <li class="bullets"><b>System Administration</b></li>
-      <li class="bullets"><b>Graphic Design</b></li>
-      <li class="bullets lowercase"><b>and anything else related</b></li>
-    </ul>
-  </div>
-  <div id="contact-section" class="contact-section">
+  <h1 id="main-heading" class="glitch" data-text="I, Xavier Zati">I, Xavier Zati</h1>
+  <p id="description" class="source-code">
+    <span class="descriptiontitle">am a jack of all trades for your business, my abilities consist of...<br></span>
+    <span class="bullets"><b>*FULL STACK WEB DEVELOPMENT</b></span><br>
+    <span class="bullets"><b>*CYBERSECURITY</b></span><br>
+    <span class="bullets"><b>*SYSTEM ADMINISTRATION</b></span><br>
+    <span class="bullets"><b>*GRAPHIC DESIGN</b></span><br>
+    <span class="bullets lowercase"><b>*and anything else related</b></span>
+  </p>
+    <div id="contact-section" style="text-align: center; margin: 20px 0;">
     <h3>Contact me here for a new project:</h3>
     <a href="mailto:zzatizabal@outlook.com" class="slideButton">Contact Me</a>
   </div>
-</div>
-
   <div id="slideshow-container" class="slideshow">
     <div class="mySlides fade">
       <img src="gif1.gif" style="width:100%">
