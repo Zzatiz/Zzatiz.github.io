@@ -19,6 +19,25 @@
       padding: 1em;
       background-color: black;
     }
+	/* Slideshow CSS */
+.slideshow {
+  width: 500px;
+  height: 450px;
+  max-width: 500px;
+    position: absolute;
+    bottom: -60%;
+  left: -11%;
+   z-index: 3;
+
+}
+.matrix {
+	z-index: 1;
+    white-space: pre;
+    font-family: monospace;
+    }
+.mySlides {
+  display: none;
+}
     .nav-item {
       font-size: 1.5em;
       color: yellow;
@@ -26,7 +45,16 @@
       transition: color 0.5s ease;
 	  margin-top: 100px;
     }
+	.slideshow {
+	  width: 500px;
+	  height: 450px;
+	  max-width: 500px;
+		position: absolute;
+		bottom: -60%;
+	  left: -11%;
+	   z-index: 3;
 
+	}
     .nav-item:hover {
       color: red;
     }
@@ -63,14 +91,14 @@
 }
 
 .sticker-p-gif {
-  background-image: url('p.gif');
-  width: 300px;
-  height: 300px;
-  left: 10%; 
-  top: 80%;
-  z-index: 1000px;
-}
-
+    display: block;
+    background-image: url(p.gif);
+    width: 300px;
+    height: 300px;
+    right: 25%;
+    top: 118%;
+    z-index: 1000px;
+	}
 .sticker-tall {
   background-image: url('scribbles.jpg');
   width: 400px;
@@ -83,10 +111,10 @@
 
 .sticker-square {
   background-image: url('cricket.gif');
-  width: 500px;
+  width: 333px;
   height: 500px;
-  left: 40%;
-  top: 50%;
+  left: 68%;
+  top: 68%;
   bottom: 10%;
 }
 
@@ -114,7 +142,11 @@ iframe {
 }
 
 </style>
-<body>
+<body onload="printLineByLine(binaryArt)">
+    <div id="title-container" style="position: relative;">
+        <pre id="matrix" class="matrix"></pre>
+        <div id="title" class="glitch" data-text="Zackary Xavier Zatizabal">Zack Zati</div>
+    </div>
   <div id="title-container" style="position: relative;">
     <pre id="matrix" class="matrix"></pre>
   </div>
@@ -137,6 +169,14 @@ iframe {
 
   </div>
 
+  <div id="slideshow-container" class="slideshow">
+    <div class="mySlides fade" style="display: none;">
+      <img src="gif1.gif" style="width:100%">
+    </div>
+    <div class="mySlides fade" style="display: block;">
+      <img src="gif2.gif" style="width:100%">
+    </div>
+  </div>
 </body>
   <script>
     const title = document.getElementById('title');
@@ -146,54 +186,59 @@ iframe {
       counter++;
       if(counter % 5 === 0) {
         title.innerText = 'Welcome to:';
-      } else if(counter % 3 === 0) {
-        title.innerText = 'gFrgh Fdhvdu';
       } else {
         title.innerText = 'ZACK ZATI';
       }
     }, 1000);
 
     function printLineByLine(text, onComplete) {
-      let lines = text.split("\n");
-      let i = 0;
-      let matrix = document.getElementById("matrix");
-      let interval = setInterval(() => {
-        if (i < lines.length) {
-          matrix.innerHTML += lines[i] + "\n";
-          i++;
-        } else {
-          clearInterval(interval);
-          onComplete(); 
-        }
-      }, 100);
+        let lines = text.split("\n");
+        let i = 0;
+        let matrix = document.getElementById("matrix");
+        let interval = setInterval(() => {
+            if (i < lines.length) {
+                matrix.innerHTML += lines[i] + "\n";
+                i++;
+            } else {
+                clearInterval(interval);
+                if (onComplete) onComplete(); 
+            }
+        }, 100);
     }
 
     function deleteLineByLine(text, onComplete) {
-      let lines = text.split("\n");
-      let i = lines.length - 1;
-      let matrix = document.getElementById("matrix");
-      let interval = setInterval(() => {
-        if (i >= 0) {
-          let currentText = matrix.innerHTML.trim().split("\n");
-          currentText.pop();
-          matrix.innerHTML = currentText.join("\n") + "\n";
-          i--;
-        } else {
-          clearInterval(interval);
-          onComplete(); 
-      }, 100);
+        let lines = text.split("\n");
+        let i = lines.length - 1;
+        let matrix = document.getElementById("matrix");
+        let interval = setInterval(() => {
+            if (i >= 0) {
+                let currentText = matrix.innerHTML.trim().split("\n");
+                currentText.pop();
+                matrix.innerHTML = currentText.join("\n") + "\n";
+                i--;
+            } else {
+                clearInterval(interval);
+                if (onComplete) onComplete(); 
+            }
+        }, 100);
     }
 
-    let binaryArt = `
-    1010101010101010
-    0101010101010101
-    1010101010101010
-    0101010101010101
-    1010101010101010
-    0101010101010101
-    1010101010101010
-    0101010101010101
-    `;
+    let binaryArt =
+        "xz\n" +
+        "            _-^-_\n" +
+        "         _/!_--_!\\_\n" +
+        "     _-','  -_.   \\\n" +
+        " ._-' ,'        `-      \\\n" +
+        "`-_.____________-\\\n" +
+        "!   /\\        /:::::::.....|\n" +
+        ";  /  \\      /..:::::::....|\n" +
+        "! /    \\    /....::::::::..|\n" +
+        "!/      \\  /.......::::::::|\n" +
+        ";--.___.\\/............. ; /\n" +
+        " '-_    `:!;;;;;;;;;;;;;;'\n" +
+        "    `-_, :!;;;;;;;;;;;''\n" +
+        "        `-!;;;;;;;;;'\n" +
+        "            `-;;;'   \n";
 
     function animationCycle() {
       printLineByLine(binaryArt, () => {
@@ -206,6 +251,22 @@ iframe {
     }
 
     animationCycle(); 
+/* ... Existing JavaScript ... */
+
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  slides[slideIndex-1].style.display = "block";  
+  setTimeout(showSlides, 4000); // Change image every 4 seconds
+}
 
     </script>
 </html>

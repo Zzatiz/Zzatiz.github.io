@@ -123,7 +123,8 @@ img#loader {
       transform: translate(-50%, -50%);
 	}
     #content {
-
+      justify-content: space-evenly;
+      align-items: flex-start;
       display: none; /* Change from 'none' to 'block' */
       position: relative; /* Adjust position */
       height: auto; /* Adjust height for content */
@@ -145,13 +146,6 @@ width: 500px;
 
 }
 /* ... Existing CSS ... */
-
-.content-section {
-  color: white;
-  text-align: left;
-  padding: 20px;
-  z-index: 2;
-}
 
 #main-heading {
   margin-left: 75px;
@@ -196,7 +190,7 @@ width: 500px;
 /* Slideshow CSS */
 .slideshow {
   width: 500px;
-  height: 500px;
+  height: 450px;
   max-width: 500px;
     position: absolute;
     bottom: -60%;
@@ -248,6 +242,45 @@ canvas {
 
 
 
+    .content-section {
+      display: block; /* Changed from none to block to make it visible */
+      position: relative; /* Adjusted position */
+      padding: 20px; /* Padding for spacing */
+      background: #000; /* Black background for the content section */
+      color: #FFF; /* White text color */
+      font-family: 'Xanh Mono', monospace; /* Your custom font */
+    }
+
+    .section-heading {
+      color: red; /* Red color for headings in the content section */
+      text-transform: uppercase; /* Uppercase for a professional look */
+      margin-bottom: 15px; /* Spacing after the heading */
+    }
+
+    #about-me ul {
+      list-style-type: none; /* Remove default list styling */
+      padding: 0; /* Remove padding */
+    }
+
+    #about-me li {
+      margin-top: 10px; /* Spacing between list items */
+      margin-left: 40px; /* Indent list items */
+    }
+
+    .contact-button {
+      display: inline-block; /* Display as inline-block for proper spacing */
+      background-color: red; /* Red background for the button */
+      color: black; /* Black text for contrast */
+      text-decoration: none; /* Remove underline from link */
+      padding: 10px 20px; /* Padding inside the button */
+      margin-top: 20px; /* Spacing before the button */
+      transition: background-color 0.3s, color 0.3s; /* Transition for hover effect */
+    }
+
+    .contact-button:hover {
+      background-color: black; /* Black background on hover */
+      color: white; /* White text on hover */
+    }
   </style>
 </head>
 <body onload="printLineByLine(binaryArt)">
@@ -266,35 +299,46 @@ canvas {
 
 
 
-<div id="content" class="content-section">
-  <h1 id="main-heading" class="glitch" data-text="I, Zack Zati">I, Zack Zati</h1>
-  <p id="description" class="source-code">
-    <span class="descriptiontitle">am a jack of all trades for your business, my abilities consist of...<br></span>
-    <span class="bullets"><b>*FULL STACK WEB DEVELOPMENT</b></span><br>
-    <span class="bullets"><b>*CYBERSECURITY COUNSELING</b></span><br>
-    <span class="bullets"><b>*SYSTEM ADMINISTRATION</b></span><br>
-    <span class="bullets"><b>*GRAPHIC DESIGN</b></span><br>
-    <span class="bullets lowercase"><b>*and anything else related</b></span>
-  </p>
-    <div id="contact-section" style="text-align: center; margin: 20px 0;">
-    <h3>Contact me here for a new project:</h3>
-    <a href="mailto:zzatizabal@outlook.com" class="slideButton">Contact Me</a>
-  </div>
-  <div id="slideshow-container" class="slideshow">
-    <div class="mySlides fade">
-      <img src="gif1.gif" style="width:100%">
-    </div>
-    <div class="mySlides fade">
-      <img src="gif2.gif" style="width:100%">
-    </div>
-  </div>
+<!-- index.html -->
 
-</div>
-  <div id="pipe-container"></div>
+<div id="content" class="content-section">
+  <header>
+    <h1 id="main-heading" class="main-heading" data-text="I, Zack Zati">I, Zack</br>Zati</h1>
+  </header>
+  <main>
+    <section id="about-me">
+      <h2 class="section-heading">About Me</h2>
+      <p>I am a jack of all trades offering a range of services. </br> My expertise and interests include:</p>
+      <ul>
+        <li><b>Full Stack Web Development</b></li>
+        <li><b>Cybersecurity/Investigating</b></li>
+        <li><b>System Administration</b></li>
+        <li><b>Graphic Design</b></li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <section id="contact-section">
+      <h2 class="section-heading">Let's Collaborate</h2>
+      <p>Contact me here to discuss a new project:</p>
+      <a href="mailto:zzimports@outlook.com" class="contact-button">Contact Me</a>
+    </section>
+  </footer>
+  
+  <div id="slideshow-container" class="slideshow">
+    <div class="mySlides fade" style="display: none;">
+    </div>
+    <div class="mySlides fade" style="display: block;">
+    </div>
+  </div>
+    <div id="pipe-container"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
 </div>
+</div>
+
+
 
 <img id="loader" src="loader.gif" alt="Loading...">
 </img>
@@ -306,7 +350,7 @@ canvas {
   // Hide the loader after 3 seconds and show the content
   setTimeout(() => {
     document.getElementById('loader').style.display = 'none';
-    document.getElementById('content').style.display = 'block';
+    document.getElementById('content').style.display = 'flex';
     document.getElementsByClassName('navbar')[0].style.display = 'flex';
     document.getElementsByClassName('slides')[0].style.display = 'flex';
     document.getElementsByClassName('mySlides')[0].style.display = 'flex';
@@ -322,7 +366,7 @@ canvas {
       if(counter % 5 === 0) {
         title.innerText = 'Welcome to:';
       } else {
-        title.innerText = 'XAVIER ZATI';
+        title.innerText = 'ZACK ZATI';
       }
     }, 1000);
 
