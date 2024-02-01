@@ -35,6 +35,100 @@
       z-index: 999; 
       pointer-events: none;
     }
+	
+/* styles.css */
+
+
+.site-header {
+  background: #101010;
+  padding: 1em 0;
+  text-align: center;
+}
+
+.navigation .nav-link {
+  color: #fff;
+  margin: 0 1em;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+.navigation .nav-link:hover,
+.navigation .nav-link.active {
+  color: #FF0000;
+}
+
+.main-content {
+  padding: 2em;
+}
+
+.hero-section {
+  text-align: center;
+}
+
+.main-title {
+  font-size: 4em;
+  margin-bottom: 0.5em;
+  /* Glitch effect applied on hover in the script */
+}
+
+.tagline {
+  font-size: 1.5em;
+  color: #777;
+  margin-bottom: 2em;
+}
+
+.services-section {
+  margin: 2em 0;
+}
+
+.section-title {
+  font-size: 2.5em;
+  margin-bottom: 1em;
+  color: #FF0000;
+  text-align: center;
+}
+
+.services-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.service-item {
+  background: #222;
+  margin: 0.5em 0;
+  padding: 1em;
+  border-left: 5px solid #FF0000;
+}
+
+.contact-section {
+  text-align: center;
+  margin: 3em 0;
+}
+
+.contact-button {
+  display: inline-block;
+  padding: 1em 2em;
+  background: #FF0000;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5em;
+  border: none;
+  cursor: pointer;
+}
+
+.contact-button:hover {
+  background: #E60000;
+}
+
+.site-footer {
+  background: #101010;
+  padding: 1em 0;
+  text-align: center;
+  font-size: 0.8em;
+}
+
+/* Rest of the styles and keyframes for glitch effect */
+
 #loader {
   position: absolute; /* Use fixed to position relative to the viewport */
   top: 50%;
@@ -81,7 +175,7 @@ img#loader {
       padding: 0;
       background-color: black;
       color: white;
-		height: 120%;
+	  height: 120%;
     }
 
 
@@ -264,9 +358,6 @@ canvas {
     <a href="Links.html" class="nav-item glitch" data-text="links">connect</a>
   </div>
 
-
-
-<!-- Snippet of the #content section within the body -->
 <div id="content" class="content-section">
   <h1 id="main-heading" class="glitch" data-text="I, Xavier Zati" aria-label="I, Xavier Zati">I, Xavier Zati</h1>
   <div id="description" class="source-code">
