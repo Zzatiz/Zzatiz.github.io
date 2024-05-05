@@ -218,8 +218,7 @@
         }
     </script>
 </head>
-<body>
-    <div id="canvas-container"></div>
+    <div id="canvas-container">
     <div class="background-cube">
         <div class="cube-face front"></div>
         <div class="cube-face back"></div>
@@ -228,6 +227,9 @@
         <div class="cube-face top"></div>
         <div class="cube-face bottom"></div>
     </div>
+</div>
+<body>
+
     <div class="content">
         <h1>The Multifaceted Approach to Cybersecurity</h1>
     <h2>Introduction</h2>
@@ -286,7 +288,7 @@
                     }
                 });
                 object.position.set(0, 0, 0);
-                object.rotation.x = Math.PI / 2; // Adjust to make the front of the lock face forward
+                object.rotation.x = Math.PI / 2; object.rotation.y = Math.PI;
                 object.scale.set(0.25, 0.25, 0.25); // Scale down
                 scene.add(object);
                 lockMesh = object;
@@ -306,7 +308,7 @@
         requestAnimationFrame(animate);
 
         if (lockMesh) {
-            lockMesh.rotation.y += (2 * Math.PI) / 120; // Adjust this for slower spin: 2*pi radians over 120 frames (~2 seconds)
+            lockMesh.rotation.x += (2 * Math.PI) / 120; // Adjust this for slower spin: 2*pi radians over 120 frames (~2 seconds)
         }
 
         renderer.render(scene, camera);
