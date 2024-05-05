@@ -285,8 +285,7 @@
                         child.material = new THREE.MeshStandardMaterial({ color: 0xFF5733 }); // Vibrant color
                     }
                 });
-                object.position.set(0, 0, 0);
-                object.rotation.x = Math.PI / 2; // Adjust to make the front of the lock face forward
+                object.rotation.y = Math.PI; // Adjust this as needed to show the keyhole side
                 object.scale.set(0.25, 0.25, 0.25); // Scale down
                 scene.add(object);
                 lockMesh = object;
@@ -306,8 +305,7 @@
         requestAnimationFrame(animate);
 
         if (lockMesh) {
-            // Adjust rotation to be slower and around the X axis
-            lockMesh.rotation.x += Math.PI / 2; // Half spin per second
+            lockMesh.rotation.y += (2 * Math.PI) / 120; // Adjust this for slower spin: 2*pi radians over 120 frames (~2 seconds)
         }
 
         renderer.render(scene, camera);
@@ -315,6 +313,7 @@
 
     init();
 </script>
+
 
 </body>
 </html>
