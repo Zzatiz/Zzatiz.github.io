@@ -46,7 +46,7 @@
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.cube-face.front  { transform: translateZ(100px) translateZ(50px); }
+.cube-face.front  { transform: translateZ(100px) translateZ(-50px); }
 .cube-face.back   { transform: rotateY(180deg) translateZ(50px); }
 .cube-face.right  { transform: rotateY(90deg) translateZ(50px); }
 .cube-face.left   { transform: rotateY(-90deg) translateZ(50px); }
@@ -270,7 +270,7 @@
         const ambientLight = new THREE.AmbientLight(0x404040);
         scene.add(ambientLight);
         const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(1, 1, 1);
+        directionalLight.position.set(0, 1, 1);
         scene.add(directionalLight);
 
         const loader = new OBJLoader();
@@ -284,7 +284,7 @@
                 });
                 object.position.set(0, 0, 0);
                 object.rotation.x = Math.PI / 2;
-				object.rotation.y = Math.PI;
+		object.rotation.y = Math.PI;
                 object.scale.set(0.25, 0.25, 0.25); // Scale down
                 scene.add(object);
                 lockMesh = object;
