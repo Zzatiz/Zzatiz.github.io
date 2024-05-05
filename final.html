@@ -32,7 +32,7 @@
             left: 50%;
             transform: translateX(-50%);
             width: 100%;
-            height: 200px; /* Enough space to view the lock */
+            height: 200px; 
             z-index: 11;
         }
 
@@ -96,7 +96,7 @@
 		right: 10%;
 		width: 100px;
 		height: 150px;
-		background: url('lock-icon.png') no-repeat center center; /* Assuming you have a lock icon image */
+		background: url('lock-icon.png') no-repeat center center;
 		background-size: contain;
 		animation: rotateLock 10s linear infinite;
 		z-index: 1;
@@ -108,7 +108,7 @@
 		}
 
 		body, html {
-		  overflow: auto;  /* Change from hidden to auto */
+		  overflow: auto;
 		  height: 100%;
 		  margin: 0;
 		}
@@ -119,7 +119,7 @@
 		  left: 0;
 		  width: 100%;
 		  height: 100%;
-		  pointer-events: none;  /* Ensures interactions with content below */
+		  pointer-events: none;
 		}
 
 
@@ -385,7 +385,7 @@ animationCycle();
     function init() {
 	const container = document.getElementById('lock-container');
         if (container.children.length) {
-            return; // Prevent multiple initializations if already contains a canvas
+            return; 
         }
         scene = new THREE.Scene();
         camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
@@ -432,8 +432,7 @@ animationCycle();
         requestAnimationFrame(animate);
 
         if (lockMesh) {
-            // This will rotate the lock 180 degrees on its Z-axis every 4 seconds
-            lockMesh.rotation.z += (Math.PI / 2) / 60; // Assuming 60fps, adjust if needed
+            lockMesh.rotation.z += (Math.PI / 2) / 60;
         }
 
         renderer.render(scene, camera);
