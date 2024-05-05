@@ -231,6 +231,7 @@
 </head>
 
 <body>
+
     <div id="lock-container"></div>
 
     <header>
@@ -301,6 +302,69 @@
 	Following an order of epilogue, I will conclude by saying WannaCry is an exemplification of the chaotic pro destructive narrative and potential shown by cyber threats whilst highlighting critical need for organized educational experiences of cybersecurity. Via integration of advanced technological defense, human behavioral enhancement, and lastly policy framework repacking and enforcement, significant strength will be seen in the growth of digital defense. The multifaceted approach is not merely a recommendation however a necessity in the quest of digital future securities and our digital future’s security. Let this essay serve not only as a call to action for the people, but as well a set of instructions…a blueprint if you will for the robust and multidimensional defense possibilities that the digital future requires.
 	</p>
 </div>
+<script>
+	const title = document.getElementById('zz');
+    let counter = 0;
+
+    setInterval(function() {
+      counter++;
+      if(counter % 5 === 0) {
+        title.innerText = 'by: Zack Zatizabal';
+      } else {
+        title.innerText = 'by: Zack Zatizabal';
+      }
+    }, 1000);
+
+    function printLineByLine(text, onComplete) {
+      let lines = text.split("\n");
+      let i = 0;
+      let matrix = document.getElementById("matrix");
+      let interval = setInterval(() => {
+        if (i < lines.length) {
+          matrix.innerHTML += lines[i] + "\n";
+          i++;
+        } else {
+          clearInterval(interval);
+          onComplete(); 
+        }
+      }, 100);
+    }
+
+    function deleteLineByLine(text, onComplete) {
+      let lines = text.split("\n");
+      let i = lines.length - 1;
+      let matrix = document.getElementById("matrix");
+      let interval = setInterval(() => {
+        if (i >= 0) {
+          let currentText = matrix.innerHTML.trim().split("\n");
+          currentText.pop();
+          matrix.innerHTML = currentText.join("\n") + "\n";
+          i--;
+        } else {
+          clearInterval(interval);
+          onComplete(); 
+        }
+      }, 100);
+    }
+
+    let binaryArt = `
+ZACKZZACkZZAckZZackZ
+ZackZZAckZZACkZZACKZ
+    `;
+
+    function animationCycle() {
+      printLineByLine(binaryArt, () => {
+        setTimeout(() => {
+          deleteLineByLine(binaryArt, () => {
+            setTimeout(animationCycle, 500); 
+          });
+        }, 500); 
+      });
+    }
+
+    animationCycle(); 
+	
+	<script/>
 <script type="module">
     import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.module.js';
     import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/loaders/OBJLoader.js';
