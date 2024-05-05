@@ -18,23 +18,25 @@
         }
         #canvas-container {
             position: fixed;
-            top: 10px;
-            left: 0;
+            top: 60px;
+            left: 50%;
             width: 100%;
-            height: 100px;
+	    transform: translateX(-50%);
+            height: 150px;
             z-index: 4;
+	    pointer-events: none;
         }
 
 .background-cube {
-    position: absolute;
+    position: fixed;
     width: 200px;
     height: 200px;
     top: 50%;
     left: 50%;
     transform-style: preserve-3d;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
     animation: rotateCube 20s linear infinite;
-    z-index: 2; /* Below the text content but above the lock model */
+    z-index: 2; 
 
 }
 
@@ -275,17 +277,17 @@
 
         const loader = new OBJLoader();
         loader.load(
-            'models/lock.obj',  // Ensure this path is correct relative to your web root
+            'models/lock.obj',
             function (object) {
                 object.traverse(function (child) {
                     if (child instanceof THREE.Mesh) {
-                        child.material = new THREE.MeshStandardMaterial({ color: 0xFF5733 }); // Vibrant color
+                        child.material = new THREE.MeshStandardMaterial({ color: 0xFF5733 }); 
                     }
                 });
                 object.position.set(0, 0, 0);
                 object.rotation.x = Math.PI / 2;
 		object.rotation.y = Math.PI;
-                object.scale.set(0.25, 0.25, 0.25); // Scale down
+                object.scale.set(0.25, 0.25, 0.25); 
                 scene.add(object);
                 lockMesh = object;
             },
