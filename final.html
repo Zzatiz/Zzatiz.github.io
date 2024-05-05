@@ -285,7 +285,8 @@
                         child.material = new THREE.MeshStandardMaterial({ color: 0xFF5733 }); // Vibrant color
                     }
                 });
-                object.rotation.y = Math.PI; // Adjust this as needed to show the keyhole side
+                object.position.set(0, 0, 0);
+                object.rotation.x = Math.PI / 2; // Adjust to make the front of the lock face forward
                 object.scale.set(0.25, 0.25, 0.25); // Scale down
                 scene.add(object);
                 lockMesh = object;
