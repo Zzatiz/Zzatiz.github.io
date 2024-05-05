@@ -46,7 +46,7 @@
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.cube-face.front  { transform: translateZ(100px); }
+.cube-face.front  { transform: translateZ(100px) translateZ(50px); }
 .cube-face.back   { transform: rotateY(180deg) translateZ(50px); }
 .cube-face.right  { transform: rotateY(90deg) translateZ(50px); }
 .cube-face.left   { transform: rotateY(-90deg) translateZ(50px); }
@@ -159,12 +159,6 @@
 	    z-index: 10;
         }
 
-        .content {
-            width: 80%;
-            margin: 30px auto;
-            font-size: 18px;
-            line-height: 1.6;
-        }
 
         h1, h2 {
             text-align: center;
