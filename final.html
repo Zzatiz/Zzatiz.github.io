@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Multifaceted Approach to Cybersecurity</title>
+    <style>
+	
+@keyframes rotateCube {
+    0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+}
+
+@keyframes colorCycle {
+    0% { background-color: rgba(255, 0, 0, 0.8); } /* Red */
+    33% { background-color: rgba(0, 255, 0, 0.8); } /* Green */
+    67% { background-color: rgba(0, 0, 255, 0.8); } /* Blue */
+    100% { background-color: rgba(255, 0, 0, 0.8); } /* Back to Red */
+}
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3; /* Layered above the background but below the content */
+        }
+
+.background-cube {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+    transform: translate(-50%, -50%);
+    animation: rotateCube 20s linear infinite;
+    z-index: 2; /* Below the text content but above the lock model */
+
+}
+
+.cube-face {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    animation: colorCycle 6s linear infinite;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.cube-face.front  { transform: translateZ(100px); }
+.cube-face.back   { transform: rotateY(180deg) translateZ(100px); }
+.cube-face.right  { transform: rotateY(90deg) translateZ(100px); }
+.cube-face.left   { transform: rotateY(-90deg) translateZ(100px); }
+.cube-face.top    { transform: rotateX(90deg) translateZ(100px); }
+.cube-face.bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+
+.parallax-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    animation: backgroundScroll 60s linear infinite;
+    z-index: -2;
+}
+
+        .content {
+            position: relative;
+            z-index: 10; /* Content should be on top */
+            margin-top: 50px;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+	@keyframes rotateLock {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	}
+
+	.lock-icon {
+		position: fixed;
+		top: 10%;
+		right: 10%;
+		width: 100px;
+		height: 150px;
+		background: url('lock-icon.png') no-repeat center center; /* Assuming you have a lock icon image */
+		background-size: contain;
+		animation: rotateLock 10s linear infinite;
+		z-index: 1;
+	}
+
+		@keyframes moveBackground {
+		  0% { transform: translateZ(-50px) rotate(0deg); }
+		  100% { transform: translateZ(-50px) rotate(360deg); }
+		}
+
+		body, html {
+		  overflow: auto;  /* Change from hidden to auto */
+		  height: 100%;
+		  margin: 0;
+		}
+
+		body::after {
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		  pointer-events: none;  /* Ensures interactions with content below */
+		}
+
+
+        @keyframes glitch-animation {
+            0% {
+                clip-path: inset(2% 0 4% 0);
+            }
+            5% {
+                clip-path: inset(10% 0 1% 0);
+            }
+            10% {
+                clip-path: inset(4% 0 8% 0);
+            }
+            15% {
+                clip-path: inset(0 0 0 0);
+            }
+            100% {
+                clip-path: inset(0 0 0 0);
+            }
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 50%, rgba(0, 0, 0, 0) 50%);
+            background-size: 100% 2px;
+            z-index: 999;
+            pointer-events: none;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: 'Source Code Pro', monospace;
+            height: 100%;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #000;
+            color: red;
+        }
+
+        .content {
+            width: 80%;
+            margin: 30px auto;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: red;
+        }
+
+        p {
+            margin: 20px 0;
+            color: #ccc;
+            text-align: justify;
+        }
+
+        .glitch {
+            position: relative;
+            color: red;
+            font-size: 22px;
+        }
+
+        .glitch:hover::before, 
+        .glitch:hover::after {
+            content: attr(data-text);
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            clip-path: inset(50% 0 50% 0);
+            animation: glitch-animation 1s infinite alternate;
+        }
+
+        .glitch:hover::before {
+            color: red;
+        }
+
+        .glitch:hover::after {
+            color: blue;
+        }
+
+        .citation {
+            font-style: italic;
+            color: #007ACC;
+        }
+    </style>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.module.js",
+                "OBJLoader": "https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/loaders/OBJLoader.js"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="background-cube">
+        <div class="cube-face front"></div>
+        <div class="cube-face back"></div>
+        <div class="cube-face right"></div>
+        <div class="cube-face left"></div>
+        <div class="cube-face top"></div>
+        <div class="cube-face bottom"></div>
+    </div>
+    <div class="content">
+        <h1>The Multifaceted Approach to Cybersecurity</h1>
+    <h2>Introduction</h2>
+    <p class="glitch" data-text="Cybersecurity in the Digital Age">In today's interconnected world, cybersecurity is not just a technical necessity but a cornerstone of modern society. Our increasing reliance on digital systems has made them prime targets for cyberattacks, which can disrupt lives, economies, and the infrastructures that sustain them. The 2017 WannaCry ransomware attack, which impacted over 200,000 computers across 150 countries, is a stark reminder of the vulnerabilities that exist within our digital ecosystems. Such incidents underscore the urgent need for robust cybersecurity measures to protect against the ever-evolving threats posed by hackers, state actors, and other malicious entities.<a href="https://www.mdpi.com/2624-800X/2/2/12">Source</a>
+</p>
+
+    <h2>Advanced Solutions and Challenges</h2>
+    <p>As technology evolves, so too does the landscape of cybersecurity threats. Experts like Jody Booth emphasize the importance of adapting our security strategies to keep pace with these changes. Integrating cutting-edge technologies such as machine learning and artificial intelligence can help us anticipate and counteract sophisticated cyber threats. However, this innovation is not without challenges; it requires a foundational shift in how we conceive of cybersecurity, moving from reactive measures to proactive and predictive strategies that safeguard our digital frontiers against potential breaches.<a href="https://link.springer.com/chapter/10.1007/978-1-4842-8297-7_5">Source</a>
+</p>
+    
+    <h2>Human Factors in Security</h2>
+    <p>Despite advances in technology, the human factor remains a critical vulnerability in cybersecurity. Human error, whether through mismanagement of resources or susceptibility to phishing attacks, often provides a foothold for cybercriminals. Addressing this issue requires more than just technological fixes; it calls for comprehensive education and ongoing training programs that leverage the capabilities of AI and machine learning to adapt to users' learning curves and improve their ability to recognize and respond to cyber threats. This holistic approach aims to fortify the weakest links in our security chains and cultivate a culture of cybersecurity awareness across all levels of an organization.<a href="https://www.academia.edu/download/89862930/IRJET_V9I401.pdf">Source</a>
+</p>
+    
+    <h2>Global Policy and Cooperation</h2>
+    <p>The complexity and scale of cyber threats necessitate a global response. Robust policy frameworks and international cooperation are essential for establishing a unified cybersecurity standard. Franklin Kramer advocates for a coordinated approach that includes public-private partnerships, aligning the efforts of governments, industry leaders, and private sector stakeholders. This collaborative environment would not only streamline the sharing of critical threat intelligence but also enable the deployment of a resilient infrastructure capable of withstanding both current and emerging cyber threats on a global scale.<a href="https://www.jstor.org/stable/pdf/resrep04034.pdf">Source</a>
+</p>
+    
+    <h2>Conclusion</h2>
+    <p>To effectively combat the multifaceted nature of cyber threats, a dynamic, comprehensive approach is essential. This approach must seamlessly integrate technological innovation with significant advancements in human behavior and policy frameworks. Together, these elements form the bedrock of a robust digital defense system that can anticipate, respond to, and mitigate cyber threats, thus ensuring the security and stability of our digital future.<a href="https://heinonline.org/hol-cgi-bin/get_pdf.cgi?handle=hein.journals/jlacybrwa5&section=13&casa_token=1xzgYDDhIWYAAAAA:_b_eLfKuzmSPzedMJvjCKu-kod26sH67VQGCNOvimXerAjCsMrscs_j8KnLP1oV2bgXh0izFCUM">Source</a>
+</p>
+
+</div>
+<script type="module">
+        import * as THREE from 'three';
+        import { OBJLoader } from 'OBJLoader';
+
+        window.addEventListener('load', function() {
+            init();
+        });
+
+        function init() {
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 0, 5);
+
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+            const ambientLight = new THREE.AmbientLight(0x404040);
+            scene.add(ambientLight);
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+            directionalLight.position.set(1, 1, 1);
+            scene.add(directionalLight);
+
+            const loader = new OBJLoader();
+            loader.load(
+                'models/lock.obj',  // Ensure this path is correct relative to your web root
+                function (object) {
+                    object.traverse(function (child) {
+                        if (child instanceof THREE.Mesh) {
+                            child.material = new THREE.MeshStandardMaterial({ color: 0xFF5733 }); // Vibrant color
+                        }
+                    });
+                    object.position.set(0, -1, 0);
+                    object.scale.set(0.5, 0.5, 0.5);
+                    scene.add(object);
+                },
+                function (xhr) {
+                    console.log(`Loaded: ${xhr.loaded / xhr.total * 100}%`);
+                },
+                function (error) {
+                    console.error('An error occurred:', error);
+                }
+            );
+
+            function animate() {
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+            }
+
+            animate();
+        }
+    </script>
+</body>
+</html>
