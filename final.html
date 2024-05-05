@@ -278,7 +278,7 @@
 
         const loader = new OBJLoader();
         loader.load(
-            'models/lock.obj',  // Adjust the path to where your OBJ file is hosted
+            'models/lock.obj',  // Ensure this path is correct relative to your web root
             function (object) {
                 object.traverse(function (child) {
                     if (child instanceof THREE.Mesh) {
@@ -286,10 +286,10 @@
                     }
                 });
                 object.position.set(0, 0, 0);
-                object.scale.set(0.25, 0.25, 0.25); // Half the original scale
-                object.rotation.x = Math.PI / 2; // Rotate to make vertical; adjust as necessary
+                object.rotation.x = Math.PI / 2; // Adjust to make the front of the lock face forward
+                object.scale.set(0.25, 0.25, 0.25); // Scale down
                 scene.add(object);
-                lockMesh = object; // Store it globally if needed for animation
+                lockMesh = object;
             },
             function (xhr) {
                 console.log(`Loaded: ${xhr.loaded / xhr.total * 100}%`);
@@ -306,7 +306,8 @@
         requestAnimationFrame(animate);
 
         if (lockMesh) {
-            lockMesh.rotation.y += Math.PI * 0.5 / 2; // Half spin per second
+            // Adjust rotation to be slower and around the X axis
+            lockMesh.rotation.x += Math.PI / 2; // Half spin per second
         }
 
         renderer.render(scene, camera);
@@ -314,3 +315,6 @@
 
     init();
 </script>
+
+</body>
+</html>
