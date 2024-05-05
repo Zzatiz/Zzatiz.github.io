@@ -288,7 +288,7 @@
                     }
                 });
                 object.position.set(0, 0, 0);
-                object.rotation.x = Math.PI / 2; object.rotation.y = Math.PI;
+                object.rotation.x = Math.PI / 2; // Adjust this as needed
                 object.scale.set(0.25, 0.25, 0.25); // Scale down
                 scene.add(object);
                 lockMesh = object;
@@ -308,7 +308,8 @@
         requestAnimationFrame(animate);
 
         if (lockMesh) {
-            lockMesh.rotation.x += (2 * Math.PI) / 120; // Adjust this for slower spin: 2*pi radians over 120 frames (~2 seconds)
+            // This will rotate the lock 180 degrees on its Z-axis every 4 seconds
+            lockMesh.rotation.z += (Math.PI / 2) / 60; // Assuming 60fps, adjust if needed
         }
 
         renderer.render(scene, camera);
@@ -316,6 +317,7 @@
 
     init();
 </script>
+
 
 
 </body>
